@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=5">
+    <title>KB BARBERSHOP CWB | Estilo e Atitude Para Todos</title>
+    <meta name="description" content="KB BARBERSHOP CWB - A melhor barbearia de Curitiba. Cortes precisos, barba impecável e atitude de verdade. Agende seu horário!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --black: #1a1a1a; --white: #ffffff; --yellow: #d4a017; --yellow-light: #f0c040; --gray-dark: #2d2d2d; --gray-medium: #555555; --gray-light: #888888; --bg-light: #f5f5f5; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 62.5%; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; font-size: 1.5rem; line-height: 1.6; color: var(--black); background: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .uppercase { text-transform: uppercase; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+        /* PARTICLES */
+        .particles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden; }
+        .particle { position: absolute; width: 4px; height: 4px; background: var(--yellow); border-radius: 50%; opacity: 0.3; animation: floatParticle linear infinite; }
+        @keyframes floatParticle { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.3; } 90% { opacity: 0.3; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
+
+        /* LOADING */
+        .loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--black); z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.8s ease, visibility 0.8s ease; }
+        .loading-screen.hidden { opacity: 0; visibility: hidden; }
+        .loading-logo { font-family: 'Oswald', sans-serif; font-size: 4rem; font-weight: 900; color: var(--white); letter-spacing: 0.1em; margin-bottom: 2rem; }
+        .loading-logo span { color: var(--yellow); }
+        .loading-bar { width: 200px; height: 3px; background: var(--gray-dark); overflow: hidden; }
+        .loading-bar-fill { height: 100%; background: var(--yellow); width: 0%; animation: loadingFill 2s ease forwards; }
+        @keyframes loadingFill { 0% { width: 0%; } 100% { width: 100%; } }
+        .loading-text { color: var(--gray-light); font-size: 1.3rem; margin-top: 1.5rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+        /* HEADER */
+        #global-header { position: sticky; top: 0; z-index: 1000; background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.08); transition: all 0.4s ease; }
+        #global-header.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        #global-header__wrapper { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 7rem; }
+        .kb-logo { font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 900; color: var(--black); text-decoration: none; letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.8rem; transition: transform 0.3s ease; }
+        .kb-logo:hover { transform: scale(1.05); }
+        .kb-logo svg { width: 3.2rem; height: 3.2rem; fill: var(--yellow); animation: scissorsPulse 2s ease-in-out infinite; }
+        @keyframes scissorsPulse { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+        .secondary-nav ul { display: flex; list-style: none; gap: 3rem; align-items: center; }
+        .secondary-nav a { color: var(--black); text-decoration: none; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.3s ease; position: relative; font-family: 'Oswald', sans-serif; }
+        .secondary-nav a::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: var(--yellow); transition: all 0.3s ease; transform: translateX(-50%); }
+        .secondary-nav a:hover { color: var(--yellow); }
+        .secondary-nav a:hover::after { width: 100%; }
+        .nav-book { background: var(--black); color: var(--white) !important; padding: 1rem 2.2rem; border-radius: 0; transition: all 0.3s ease !important; position: relative; overflow: hidden; }
+        .nav-book::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--yellow); transition: left 0.4s ease; z-index: -1; }
+        .nav-book:hover::before { left: 0; }
+        .nav-book:hover { color: var(--black) !important; }
+        .nav-book::after { display: none !important; }
+        .header-cart { color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem; font-weight: 600; transition: transform 0.3s ease; }
+        .header-cart:hover { transform: scale(1.1); }
+        .header-cart svg { width: 2.6rem; height: 2.6rem; fill: var(--black); transition: fill 0.3s ease; }
+        .header-cart:hover svg { fill: var(--yellow); }
+
+        /* HERO */
+        .page-hero { position: relative; width: 100%; height: 100vh; min-height: 600px; max-height: 900px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .video-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 2; }
+        .hero-bg-image { width: 100%; height: 100%; object-fit: cover; animation: heroZoom 20s ease-in-out infinite alternate; }
+        @keyframes heroZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        .page-hero-headline { position: relative; z-index: 3; text-align: center; padding: 2rem; max-width: 1000px; }
+        .page-hero-headline h2 { font-size: clamp(3.5rem, 7vw, 7rem); color: var(--white); line-height: 1.05; text-shadow: 0 2px 30px rgba(0,0,0,0.4); letter-spacing: 0.02em; min-height: 1.2em; }
+        .typing-cursor { display: inline-block; width: 3px; height: 1em; background: var(--yellow); margin-left: 5px; animation: blink 0.8s infinite; vertical-align: text-bottom; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .hero-subtitle { font-size: 1.8rem; color: var(--white); opacity: 0.8; margin-top: 2rem; letter-spacing: 0.15em; text-transform: uppercase; animation: fadeInUp 1s ease 0.5s both; }
+        .hero-cta { margin-top: 3rem; animation: fadeInUp 1s ease 1s both; }
+        .hero-cta .button { font-size: 1.6rem; padding: 1.6rem 4rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 3; animation: bounce 2s infinite; }
+        .scroll-indicator svg { width: 3rem; height: 3rem; fill: var(--white); opacity: 0.7; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-15px); } 60% { transform: translateX(-50%) translateY(-8px); } }
+
+        /* BOOKING */
+        .booking-hero { position: relative; min-height: 500px; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://kimi-web-img.moonshot.cn/img/www.comfortel.com.au/5a5339aa2fa6a67db2923fcb4c329190f35629c6.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .hero-widget { background: rgba(255,255,255,0.96); padding: 4.5rem 5rem; max-width: 550px; width: 100%; text-align: center; border-radius: 0; box-shadow: 0 25px 80px rgba(0,0,0,0.35); transform: translateY(50px); opacity: 0; transition: all 0.8s ease; }
+        .hero-widget.visible { transform: translateY(0); opacity: 1; }
+        .hero-headline { font-size: 3rem; color: var(--black); margin-bottom: 2.5rem; letter-spacing: 0.03em; }
+        .markets { display: flex; justify-content: center; gap: 2.5rem; list-style: none; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .markets li { transform: translateY(20px); opacity: 0; transition: all 0.5s ease; }
+        .markets.visible li { transform: translateY(0); opacity: 1; }
+        .markets li:nth-child(1) { transition-delay: 0.1s; }
+        .markets li:nth-child(2) { transition-delay: 0.2s; }
+        .markets li:nth-child(3) { transition-delay: 0.3s; }
+        .markets li a { color: var(--gray-medium); text-decoration: none; font-size: 1.4rem; font-weight: 700; padding: 0.9rem 1.8rem; border: 2px solid var(--gray-light); border-radius: 0; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; }
+        .markets li a:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(212,160,23,0.08); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212,160,23,0.2); }
+        .hero-search-bar { display: flex; max-width: 420px; margin: 0 auto; border: 2px solid var(--black); border-radius: 0; overflow: hidden; transition: all 0.3s ease; }
+        .hero-search-bar:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        .hero-search-bar input { flex: 1; border: none; padding: 1.3rem 1.8rem; font-size: 1.4rem; font-family: 'Inter', sans-serif; outline: none; color: var(--gray-medium); }
+        .hero-search-bar input::placeholder { color: var(--gray-light); }
+        .search-submit-btn { background: var(--black); color: var(--white); border: none; padding: 0 2.5rem; font-size: 2.2rem; cursor: pointer; transition: all 0.3s ease; font-weight: 300; }
+        .search-submit-btn:hover { background: var(--yellow); color: var(--black); transform: scale(1.1); }
+
+        /* COUNTER */
+        .counter-section { background: var(--black); padding: 6rem 2rem; display: flex; justify-content: center; gap: 6rem; flex-wrap: wrap; }
+        .counter-item { text-align: center; color: var(--white); }
+        .counter-number { font-family: 'Oswald', sans-serif; font-size: 5rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+        .counter-label { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.15em; margin-top: 1rem; color: var(--gray-light); }
+
+        /* SERVICES */
+        .threeup-container { max-width: 1400px; margin: 0 auto; padding: 8rem 3rem; background: var(--bg-light); }
+        .threeup-headline { font-size: 4.2rem; text-align: center; margin-bottom: 5rem; color: var(--black); letter-spacing: 0.04em; }
+        .threeup-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem; }
+        .threeup-card { text-align: left; background: var(--white); overflow: hidden; border-radius: 0; transition: all 0.4s ease; }
+        .threeup-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+        .three-card-image-container { width: 100%; aspect-ratio: 4/3; overflow: hidden; border-radius: 0; position: relative; }
+        .three-card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .threeup-card:hover .three-card-image { transform: scale(1.15); }
+        .three-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%); opacity: 0; transition: opacity 0.4s ease; display: flex; align-items: flex-end; padding: 2rem; }
+        .threeup-card:hover .three-card-overlay { opacity: 1; }
+        .three-card-overlay span { color: var(--yellow); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transform: translateY(20px); transition: transform 0.4s ease 0.1s; }
+        .threeup-card:hover .three-card-overlay span { transform: translateY(0); }
+        .threeup-card-title { font-size: 2.4rem; margin: 2rem 2rem 1rem; color: var(--black); letter-spacing: 0.03em; transition: color 0.3s ease; }
+        .threeup-card:hover .threeup-card-title { color: var(--yellow); }
+        .threeup-card-copy { font-size: 1.5rem; color: var(--gray-medium); line-height: 1.7; padding: 0 2rem 2rem; }
+
+        /* BLURB */
+        .blurb-container { position: relative; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .blurb-responsive-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .blurb-responsive-image img { width: 100%; height: 100%; object-fit: cover; }
+        .blurb-responsive-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55); z-index: 2; }
+        .blurb-content-container { position: relative; z-index: 3; padding: 6rem 2rem; width: 100%; text-align: center; }
+        .blurb-headline { font-size: clamp(2.8rem, 5.5vw, 5rem); color: var(--white); margin-bottom: 3rem; line-height: 1.15; letter-spacing: 0.02em; }
+        .text-color-yellow { color: var(--yellow) !important; }
+        .text-color-white { color: var(--white) !important; }
+        .blurb-button-container { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+
+        /* BUTTONS */
+        .button { display: inline-block; padding: 1.5rem 4rem; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; border-radius: 0; transition: all 0.4s ease; cursor: pointer; border: 2px solid transparent; font-family: 'Oswald', sans-serif; position: relative; overflow: hidden; }
+        .button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; transition: left 0.4s ease; z-index: -1; }
+        .button:hover::before { left: 0; }
+        .button.light { background: var(--white); color: var(--black); border-color: var(--white); }
+        .button.light::before { background: var(--black); }
+        .button.light:hover { color: var(--white); background: transparent; }
+        .button.dark { background: var(--black); color: var(--white); border-color: var(--black); }
+        .button.dark::before { background: var(--yellow); }
+        .button.dark:hover { color: var(--black); background: transparent; }
+        .button.yellow { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+        .button.yellow::before { background: var(--black); }
+        .button.yellow:hover { color: var(--yellow); background: transparent; }
+
+        /* SHOP */
+        .homepage-collection { max-width: 1400px; margin: 0 auto; padding: 8rem 3rem; background: var(--bg-light); }
+        .featured_collection_headline { font-size: 4.2rem; text-align: center; margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+        .product-navigation { text-align: center; margin-bottom: 4.5rem; }
+        .product-navigation__nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        .product-navigation__nav_link { color: var(--gray-medium); text-decoration: none; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease; position: relative; font-family: 'Oswald', sans-serif; padding: 0.5rem 0; }
+        .product-navigation__nav_link:hover { color: var(--yellow); }
+        .product-navigation__nav_link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--yellow); transition: all 0.3s ease; transform: translateX(-50%); }
+        .product-navigation__nav_link:hover::after { width: 100%; }
+        .collection-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; list-style: none; }
+        .product-card { background: var(--white); border-radius: 0; overflow: hidden; transition: all 0.4s ease; position: relative; }
+        .product-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--yellow); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; z-index: 2; }
+        .product-card:hover::before { transform: scaleX(1); }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+        .product-card a { text-decoration: none; color: inherit; display: block; }
+        .product-card__image-set { position: relative; aspect-ratio: 3/4; overflow: hidden; background: #f0f0f0; }
+        .product-card__image { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s ease; }
+        .product-card__image--1 { position: absolute; top: 0; left: 0; opacity: 0; transform: scale(1.1); }
+        .product-card:hover .product-card__image--0 { opacity: 0; transform: scale(1.1); }
+        .product-card:hover .product-card__image--1 { opacity: 1; transform: scale(1); }
+        .product-badge { position: absolute; top: 1.5rem; left: 1.5rem; background: var(--yellow); color: var(--black); padding: 0.5rem 1.2rem; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; z-index: 2; transform: translateX(-100%); opacity: 0; transition: all 0.4s ease; }
+        .product-card:hover .product-badge { transform: translateX(0); opacity: 1; }
+        .product-title { font-size: 1.8rem; margin: 1.8rem 1.8rem 0.6rem; color: var(--black); letter-spacing: 0.02em; transition: color 0.3s ease; }
+        .product-card:hover .product-title { color: var(--yellow); }
+        .product-card span { display: block; font-size: 1.3rem; color: var(--gray-medium); margin: 0 1.8rem; }
+        .purchase-content { font-size: 1.6rem; font-weight: 700; color: var(--black); margin: 1.2rem 1.8rem 1.8rem; transition: color 0.3s ease; }
+        .product-card:hover .purchase-content { color: var(--yellow); }
+
+        /* FOOTER */
+        footer { background: var(--black); color: var(--white); padding: 6rem 0 0; position: relative; overflow: hidden; }
+        footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--yellow), var(--yellow-light), var(--yellow)); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .footer-section { max-width: 1400px; margin: 0 auto; padding: 0 3rem; }
+        .footer-about { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; padding-bottom: 5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .footer-left { display: flex; flex-direction: column; gap: 2.5rem; }
+        .footer-rudy-logo { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 900; color: var(--white); letter-spacing: 0.05em; transition: transform 0.3s ease; }
+        .footer-rudy-logo:hover { transform: scale(1.02); }
+        .footer-rudy-logo span { color: var(--yellow); }
+        .footer-about-nav { display: flex; flex-direction: column; gap: 1.2rem; }
+        .footer-about-nav a { color: var(--gray-light); text-decoration: none; font-size: 1.4rem; transition: all 0.3s ease; font-weight: 500; position: relative; display: inline-block; width: fit-content; }
+        .footer-about-nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--yellow); transition: width 0.3s ease; }
+        .footer-about-nav a:hover { color: var(--yellow); transform: translateX(5px); }
+        .footer-about-nav a:hover::after { width: 100%; }
+        .footer-social-icons-nav { display: flex; gap: 1.8rem; margin-top: 1rem; }
+        .footer-social-icons-nav a { color: var(--white); transition: all 0.3s ease; display: inline-block; }
+        .footer-social-icons-nav a:hover { color: var(--yellow); transform: translateY(-5px) scale(1.2); }
+        .footer-social-icons-nav svg { width: 2.6rem; height: 2.6rem; fill: currentColor; }
+        .footer-right { display: flex; flex-direction: column; justify-content: flex-start; }
+        .footer-newsletter h3 { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--white); letter-spacing: 0.03em; }
+        .footer-newsletter p { font-size: 1.4rem; color: var(--gray-light); margin-bottom: 2.5rem; line-height: 1.7; }
+        .signup__form { display: flex; gap: 0; max-width: 420px; position: relative; }
+        .signup__form input { flex: 1; padding: 1.3rem 1.8rem; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: var(--white); font-size: 1.4rem; outline: none; border-radius: 0; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+        .signup__form input:focus { border-color: var(--yellow); background: rgba(255,255,255,0.1); box-shadow: 0 0 20px rgba(212,160,23,0.2); }
+        .signup__form input::placeholder { color: var(--gray-light); }
+        .signup__form button { padding: 0 2.5rem; background: var(--yellow); border: none; color: var(--black); cursor: pointer; border-radius: 0; transition: all 0.3s ease; }
+        .signup__form button:hover { background: var(--yellow-light); transform: scale(1.1); }
+        .signup__form button svg { width: 2.2rem; height: 2.2rem; fill: var(--black); transition: transform 0.3s ease; }
+        .signup__form button:hover svg { transform: translateX(5px); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; flex-wrap: wrap; gap: 1.5rem; }
+        .footer-privacy-nav { display: flex; gap: 2.5rem; }
+        .footer-privacy-nav a { color: var(--gray-light); text-decoration: none; font-size: 1.3rem; transition: all 0.3s ease; }
+        .footer-privacy-nav a:hover { color: var(--yellow); }
+        .footer-copyright { font-size: 1.3rem; color: var(--gray-light); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1023px) {
+            .threeup-section { grid-template-columns: repeat(2, 1fr); }
+            .collection-container { grid-template-columns: repeat(2, 1fr); }
+            .footer-about { grid-template-columns: 1fr; gap: 4rem; }
+            #global-header__wrapper { padding: 0 2rem; }
+            .counter-section { gap: 3rem; }
+        }
+        @media (max-width: 767px) {
+            #global-header__wrapper { flex-wrap: wrap; height: auto; padding: 1.2rem 1.5rem; gap: 1rem; }
+            .kb-logo { font-size: 2.2rem; }
+            .secondary-nav { order: 3; width: 100%; margin-top: 0.5rem; }
+            .secondary-nav ul { justify-content: center; gap: 1.5rem; }
+            .threeup-section { grid-template-columns: 1fr; }
+            .collection-container { grid-template-columns: 1fr; }
+            .page-hero { min-height: 450px; height: 70vh; }
+            .hero-widget { padding: 3rem 2rem; }
+            .markets { flex-direction: column; align-items: center; gap: 1rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .hero-headline { font-size: 2.4rem; }
+            .threeup-headline, .featured_collection_headline { font-size: 3rem; }
+            .counter-section { gap: 2rem; }
+            .counter-number { font-size: 3.5rem; }
+        }
+
+        /* ANIMATIONS */
+        .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-in-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+        .scale-in { opacity: 0; transform: scale(0.8); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+    </style>
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; gap:3rem;">
+            <img src="ChatGPT Image 8 de mai. de 2026, 09_35_10(1).png" alt="KB BARBERSHOP Logo" style="height: 18rem; width: auto; max-width: 500px; object-fit: contain; filter: brightness(0) invert(1); display:block;">
+            <div class="loading-bar" style="margin-top:2rem;"><div class="loading-bar-fill"></div></div>
+            <div class="loading-text" style="margin-top:1rem;">Carregando Experiência</div>
+        </div>
+    </div>
+
+    <!-- PARTICLES -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- HEADER -->
+    <header id="global-header" class="sticky-top">
+        <section id="global-header__wrapper">
+            <a class="kb-logo" href="/" aria-label="KB BARBERSHOP CWB Home" style="display:flex; align-items:center; text-decoration:none;">
+                <img src="ChatGPT Image 8 de mai. de 2026, 09_35_10(1).png" alt="KB BARBERSHOP Logo" style="height: 6rem; width: auto; max-width: 220px; object-fit: contain; display:block;">
+            </a>
+            <nav id="nav__global-header__secondary" class="secondary-nav" aria-label="primary-menu">
+                <ul>
+                    <li><a class="nav-book" href="#agendar" aria-label="Agendar Horário">AGENDAR</a></li>
+                    <li><a class="nav-products" aria-label="Serviços" href="#servicos">SERVIÇOS</a></li>
+                    <li><a class="nav-careers" aria-label="Produtos" href="#produtos">PRODUTOS</a></li>
+                </ul>
+            </nav>
+            <nav id="nav__global-header__customer" aria-label="cart-menu">
+                <a class="header-cart" aria-label="Abrir Carrinho" href="#carrinho">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 22q-.825 0-1.412-.587Q5 20.825 5 20q0-.825.588-1.413Q6.175 18 7 18t1.412.587Q9 19.175 9 20q0 .825-.588 1.413Q7.825 22 7 22zm10 0q-.825 0-1.412-.587Q15 20.825 15 20q0-.825.588-1.413Q16.175 18 17 18t1.413.587Q19 19.175 19 20q0 .825-.587 1.413Q17.825 22 17 22zM7 17q-1.125 0-1.7-.988-.575-.987-.05-1.962L6.6 11.6 3 4H1.975q-.425 0-.7-.288Q1 3.425 1 3t.288-.713Q1.575 2 2 2h1.625q.275 0 .525.15t.375.425L5.2 4h14.75q.675 0 .925.5t-.025 1.05l-3.55 6.4q-.275.5-.725.775-.45.275-1.025.275H8.1L7 15h11.025q.425 0 .7.287.275.288.275.713t-.288.712Q18.425 17 18 17z"/></svg>
+                </a>
+            </nav>
+        </section>
+    </header>
+
+    <main id="MainContent">
+
+        <!-- HERO -->
+        <section class="page-hero" style="height: 100vh; min-height: 700px;">
+            <h1 class="visually-hidden">KB BARBERSHOP CWB</h1>
+            <div class="video-container">
+                <img src="ChatGPT Image 8 de mai. de 2026, 09_35_56(1).png" alt="KB BARBERSHOP Banner" class="hero-bg-image" style="object-position: center top;">
+            </div>
+            <div class="scroll-indicator">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16l-6-6h12z"/></svg>
+            </div>
+        </section>
+
+        <!-- BOOKING -->
+        <section class="booking-hero hero-container" id="agendar">
+            <div class="hero-widget" id="bookingWidget">
+                <h2 class="hero-headline">BOOK AN APPOINTMENT</h2>
+                <ul class="markets" id="marketsList">
+                    <li><a href="#" aria-label="Curitiba Centro">CURITIBA CENTRO</a></li>
+                    <li><a href="#" aria-label="Curitiba Batel">CURITIBA BATEL</a></li>
+                    <li><a href="#" aria-label="Curitiba Água Verde">ÁGUA VERDE</a></li>
+                </ul>
+                <div class="hero-search-bar">
+                    <input type="text" readonly placeholder="Clique para encontrar uma unidade" style="cursor: pointer;">
+                    <button type="button" class="search-submit-btn">→</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUNTER -->
+        <section class="counter-section">
+            <div class="counter-item fade-in">
+                <div class="counter-number" data-target="5000">0</div>
+                <div class="counter-label">Clientes Satisfeitos</div>
+            </div>
+            <div class="counter-item fade-in stagger-1">
+                <div class="counter-number" data-target="15">0</div>
+                <div class="counter-label">Barbeiros Expert</div>
+            </div>
+            <div class="counter-item fade-in stagger-2">
+                <div class="counter-number" data-target="3">0</div>
+                <div class="counter-label">Unidades em CWB</div>
+            </div>
+            <div class="counter-item fade-in stagger-3">
+                <div class="counter-number" data-target="6">0</div>
+                <div class="counter-label">Anos de Experiência</div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="threeup-container page-container--max" id="servicos">
+            <h2 class="threeup-headline uppercase fade-in">SERVICES</h2>
+            <div class="threeup-section">
+                <div class="threeup-card fade-in stagger-1">
+                    <div class="three-card-image-container">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.notyourfathersbarber.com/37c56b2b413c27713b23a5d65e334c5b75e43a19.jpg" alt="Haircuts" class="three-card-image">
+                        <div class="three-card-overlay"><span>Ver Mais →</span></div>
+                    </div>
+                    <h3 class="threeup-card-title">HAIRCUTS</h3>
+                    <div class="threeup-card-copy"><p>We'll snip it, chop it, buzz it or trim it anyway you'd like. All haircut services include shampoo, mini scalp massage and restorative hot towel service</p></div>
+                </div>
+                <div class="threeup-card fade-in stagger-2">
+                    <div class="three-card-image-container">
+                        <img src="https://kimi-web-img.moonshot.cn/img/thevaletlondon.com/a3a100443112b685a398e902d423258ba0c38267.jpg" alt="Color" class="three-card-image">
+                        <div class="three-card-overlay"><span>Ver Mais →</span></div>
+                    </div>
+                    <h3 class="threeup-card-title">COLOR</h3>
+                    <div class="threeup-card-copy"><p>Book a complimentary color consultation so we can find out what you need and the best path to take you there! We'll get you scheduled for your color services following your consultation.</p></div>
+                </div>
+                <div class="threeup-card fade-in stagger-3">
+                    <div class="three-card-image-container">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn.barbarossanyc.com/cb9ee5a38a7116390f1699abc90d5a120687919f.jpg" alt="Extras" class="three-card-image">
+                        <div class="three-card-overlay"><span>Ver Mais →</span></div>
+                    </div>
+                    <h3 class="threeup-card-title">EXTRAS</h3>
+                    <div class="threeup-card-copy"><p>Looking for a bang trim, scalp massage, beard trim, conditioning treatment or other special service? Find them here!</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLURB 1 -->
+        <section class="blurb-container">
+            <div class="blurb-responsive-image">
+                <img src="https://kimi-web-img.moonshot.cn/img/images.fineartamerica.com/1b2e2d43df6b88b7b674e6c4322ef3ab99779efb.jpg" alt="Barbershop Walk-ins">
+            </div>
+            <div class="blurb-content-container">
+                <h2 class="blurb-headline uppercase text-color-yellow">WALK-INS ARE WELCOME,<br>BUT BOOKING IS BEST!</h2>
+                <div class="blurb-button-container">
+                    <a class="button yellow" href="#agendar">AGENDAR AGORA</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOP -->
+        <section class="homepage-collection page-container--max" id="produtos">
+            <h2 class="uppercase featured_collection_headline fade-in">SHOP</h2>
+            <div class="product-navigation">
+                <nav class="product-navigation__nav" role="navigation" aria-label="home-product-menu">
+                    <a class="product-navigation__nav_link" href="#">ALL PRODUCTS</a>
+                    <a class="product-navigation__nav_link" href="#">HAIR</a>
+                    <a class="product-navigation__nav_link" href="#">BODY</a>
+                    <a class="product-navigation__nav_link" href="#">TRAVEL SIZE</a>
+                    <a class="product-navigation__nav_link" href="#">KITS</a>
+                </nav>
+            </div>
+            <ul class="collection-container">
+                <li class="product-card fade-in stagger-1">
+                    <a href="#" style="height: 100%; display: block;">
+                        <div class="product-card__image-set">
+                            <img src="https://kimi-web-img.moonshot.cn/img/americanpomade.com/1ee4a53b400d74dde5911d9e79e99c1a515dc754.png" alt="No. 1 Shampoo" class="product-card__image product-card__image--0">
+                            <img src="https://kimi-web-img.moonshot.cn/img/johnnyslicks.com/805a6b7011d52ba8e572609acd82e4123cd60721.png" alt="No. 1 Shampoo Hover" class="product-card__image product-card__image--1" aria-hidden="true">
+                            <div class="product-badge">Best Seller</div>
+                        </div>
+                        <h3 class="product-title">No. 1 Shampoo</h3>
+                        <span>Our Best Selling Shampoo</span>
+                        <div class="purchase-content">R$ 49,90</div>
+                    </a>
+                </li>
+                <li class="product-card fade-in stagger-2">
+                    <a href="#" style="height: 100%; display: block;">
+                        <div class="product-card__image-set">
+                            <img src="https://kimi-web-img.moonshot.cn/img/americanpomade.com/1ee4a53b400d74dde5911d9e79e99c1a515dc754.png" alt="No. 2 Conditioner" class="product-card__image product-card__image--0">
+                            <img src="https://kimi-web-img.moonshot.cn/img/johnnyslicks.com/805a6b7011d52ba8e572609acd82e4123cd60721.png" alt="No. 2 Conditioner Hover" class="product-card__image product-card__image--1" aria-hidden="true">
+                        </div>
+                        <h3 class="product-title">No. 2 Conditioner</h3>
+                        <span>Our Best-Selling Conditioner</span>
+                        <div class="purchase-content">R$ 49,90</div>
+                    </a>
+                </li>
+                <li class="product-card fade-in stagger-3">
+                    <a href="#" style="height: 100%; display: block;">
+                        <div class="product-card__image-set">
+                            <img src="https://kimi-web-img.moonshot.cn/img/americanpomade.com/1ee4a53b400d74dde5911d9e79e99c1a515dc754.png" alt="No. 3 Body Wash" class="product-card__image product-card__image--0">
+                            <img src="https://kimi-web-img.moonshot.cn/img/johnnyslicks.com/805a6b7011d52ba8e572609acd82e4123cd60721.png" alt="No. 3 Body Wash Hover" class="product-card__image product-card__image--1" aria-hidden="true">
+                        </div>
+                        <h3 class="product-title">No. 3 Body Wash</h3>
+                        <span>Our Best-Selling Body Wash</span>
+                        <div class="purchase-content">R$ 49,90</div>
+                    </a>
+                </li>
+                <li class="product-card fade-in stagger-4">
+                    <a href="#" style="height: 100%; display: block;">
+                        <div class="product-card__image-set">
+                            <img src="https://kimi-web-img.moonshot.cn/img/americanpomade.com/1ee4a53b400d74dde5911d9e79e99c1a515dc754.png" alt="1-2-3 Bundle" class="product-card__image product-card__image--0">
+                            <img src="https://kimi-web-img.moonshot.cn/img/johnnyslicks.com/805a6b7011d52ba8e572609acd82e4123cd60721.png" alt="1-2-3 Bundle Hover" class="product-card__image product-card__image--1" aria-hidden="true">
+                            <div class="product-badge">Kit</div>
+                        </div>
+                        <h3 class="product-title">1-2-3 Bundle</h3>
+                        <span>Shampoo + Conditioner + Body Wash</span>
+                        <div class="purchase-content">R$ 129,90 / 2 Sizes</div>
+                    </a>
+                </li>
+                <li class="product-card fade-in stagger-5">
+                    <a href="#" style="height: 100%; display: block;">
+                        <div class="product-card__image-set">
+                            <img src="https://kimi-web-img.moonshot.cn/img/johnnyslicks.com/805a6b7011d52ba8e572609acd82e4123cd60721.png" alt="Matte Pomade" class="product-card__image product-card__image--0">
+                            <img src="https://kimi-web-img.moonshot.cn/img/americanpomade.com/1ee4a53b400d74dde5911d9e79e99c1a515dc754.png" alt="Matte Pomade Hover" class="product-card__image product-card__image--1" aria-hidden="true">
+                        </div>
+                        <h3 class="product-title">Matte Pomade</h3>
+                        <span>Pliable Hold with a Matte Finish</span>
+                        <div class="purchase-content">R$ 49,90 / 2 Sizes</div>
+                    </a>
+                </li>
+                <li class="product-card fade-in stagger-6">
+                    <a href="#" style="height: 100%; display: block;">
+                        <div class="product-card__image-set">
+                            <img src="https://kimi-web-img.moonshot.cn/img/johnnyslicks.com/805a6b7011d52ba8e572609acd82e4123cd60721.png" alt="Soft Clay Pomade" class="product-card__image product-card__image--0">
+                            <img src="https://kimi-web-img.moonshot.cn/img/americanpomade.com/1ee4a53b400d74dde5911d9e79e99c1a515dc754.png" alt="Soft Clay Pomade Hover" class="product-card__image product-card__image--1" aria-hidden="true">
+                        </div>
+                        <h3 class="product-title">Soft Clay Pomade</h3>
+                        <span>Strong Hold with Natural Texture</span>
+                        <div class="purchase-content">R$ 49,90 / 2 Sizes</div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- BLURB 2 -->
+        <section class="blurb-container">
+            <div class="blurb-responsive-image">
+                <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/b5fb285a23a687372f6c5eda2038ffa4e68eb6c3.jpg" alt="Our Story">
+            </div>
+            <div class="blurb-content-container">
+                <h2 class="blurb-headline uppercase text-color-white">IT'S NEVER JUST BEEN ABOUT THE HAIR</h2>
+                <div class="blurb-button-container">
+                    <a class="button light" href="#">OUR STORY</a>
+                    <a class="button light" href="#">JOIN OUR TEAM</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2 class="visually-hidden">Footer</h2>
+        <section class="footer-section page-container--max">
+            <div class="footer-about">
+                <div class="footer-left">
+                    <div class="footer-rudy-logo" style="margin-bottom: 2rem;">
+                        <img src="ChatGPT Image 8 de mai. de 2026, 09_35_10(1).png" alt="KB BARBERSHOP Logo" style="height: 7rem; width: auto; max-width: 280px; object-fit: contain; filter: brightness(0) invert(1); display:block;">
+                    </div>
+                    <nav role="navigation" aria-label="footer-about-menu" class="footer-about-nav">
+                        <a href="#">Our Story</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Help</a>
+                        <a href="#">Wholesale</a>
+                    </nav>
+                    <nav role="navigation" aria-label="footer-action-menu" class="footer-about-nav">
+                        <a href="#agendar">Book an Appointment</a>
+                        <a href="#">Log-in to the shop</a>
+                    </nav>
+                    <div class="footer-social-icons-nav">
+                        <h3 class="visually-hidden">Social</h3>
+                        <nav role="navigation" aria-label="footer-social-menu">
+                            <a aria-label="Instagram" href="#" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M40.4 24c0-2.91.24-9.16-.81-11.79a6.73 6.73 0 0 0-3.8-3.8c-2.62-1-8.88-.8-11.79-.8s-9.15-.25-11.78.8a6.75 6.75 0 0 0-3.81 3.8c-1 2.63-.8 8.88-.8 11.79s-.24 9.16.8 11.79a6.75 6.75 0 0 0 3.81 3.8c2.62 1 8.88.81 11.78.81s9.16.24 11.79-.81a6.7 6.7 0 0 0 3.8-3.8c1.05-2.62.81-8.88.81-11.79zm-6.14 0A10.26 10.26 0 1 1 24 13.75 10.24 10.24 0 0 1 34.26 24zm-3.59 0A6.67 6.67 0 1 0 24 30.67 6.67 6.67 0 0 0 30.67 24zm4-8.28a2.4 2.4 0 1 1 2.39-2.39 2.38 2.38 0 0 1-2.38 2.39z"/></svg>
+                            </a>
+                            <a aria-label="Facebook" href="#" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M46 24a22 22 0 1 0-25.44 21.73V30.36H15V24h5.58v-4.85c0-5.51 3.29-8.56 8.31-8.56a33.87 33.87 0 0 1 4.91.41v5.42H31c-2.73 0-3.58 1.69-3.58 3.43V24h6.1l-1 6.36h-5.08v15.37A22 22 0 0 0 46 24z"/></svg>
+                            </a>
+                            <a aria-label="WhatsApp" href="#" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.96-1.38-.92-2.61.05-1.22.69-1.8.95-2.04.24-.26.51-.29.68-.26h.47c.35 0 .51.24.61.35.07.01.12.04.15.07.06.06.1.14.14.22.04.08.08.16.1.23.25.86.5 1.11.55 1.2.05.09.09.21.05.33-.04.11-.14.2-.21.26-.07.06-.14.11-.21.17-.14.11-.28.23-.38.31-.12.09-.25.19-.35.27-.11.09-.21.19-.28.29-.08.1-.14.21-.19.33-.05.11-.09.23-.12.35-.03.12-.05.24-.06.37 0 .12.01.25.04.37.03.12.07.24.12.35.05.11.11.22.18.32.07.1.15.2.24.28.09.08.19.16.3.22.11.06.23.11.35.15.12.04.25.07.38.09.13.02.26.03.39.03.13 0 .26-.01.39-.03.13-.02.26-.05.38-.09.12-.04.24-.09.35-.15.11-.06.21-.14.3-.22.09-.08.17-.18.24-.28.07-.1.13-.21.18-.32.05-.11.09-.23.12-.35.03-.12.04-.25.04-.37 0-.13-.02-.25-.06-.37-.03-.12-.07-.24-.12-.35-.05-.11-.11-.22-.19-.33-.07-.1-.17-.2-.28-.29-.1-.08-.23-.18-.35-.27-.1-.08-.24-.2-.38-.31-.07-.06-.14-.11-.21-.17-.07-.06-.17-.15-.21-.26-.04-.12 0-.24.05-.33.05-.09.3-.34.55-1.2.02-.07.06-.15.1-.23.04-.08.08-.16.14-.22.03-.03.08-.06.15-.07.1-.11.26-.35.61-.35h.47c.17-.03.44 0 .68.26.26.24.9.82.95 2.04.04 1.23-.8 2.44-.92 2.61z"/></svg>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-newsletter">
+                        <h3>CONNECT WITH US AND GET 15% OFF</h3>
+                        <p>Be the first to know about new products, events, exclusive promos, and exciting news. Plus, get 15% off your next haircut or online purchase.</p>
+                        <form class="signup__form" action="#" method="GET">
+                            <input type="email" name="email" placeholder="Enter your email" required>
+                            <button type="submit" aria-label="Enviar">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 20-1.425-1.4 5.6-5.6H4v-2h12.175l-5.6-5.6L12 4l8 8z"/></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-privacy-nav">
+                    <nav role="navigation" aria-label="footer-privacy-menu">
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                    </nav>
+                </div>
+                <div class="footer-copyright">
+                    <span>© 2026 KB BARBERSHOP CWB - Todos os Direitos Reservados</span>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2200);
+        });
+
+        // Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 25;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.width = (Math.random() * 4 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('global-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Booking Widget Animation
+            const bookingWidget = document.getElementById('bookingWidget');
+            const marketsList = document.getElementById('marketsList');
+
+            const bookingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        bookingWidget.classList.add('visible');
+                        marketsList.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            bookingObserver.observe(bookingWidget);
+
+            // Counter Animation
+            const counters = document.querySelectorAll('.counter-number');
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        animateCounter(entry.target, target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+
+            function animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 50;
+                const duration = 2000;
+                const stepTime = duration / 50;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, stepTime);
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
